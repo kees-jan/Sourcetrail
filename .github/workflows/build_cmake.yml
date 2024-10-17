@@ -64,7 +64,7 @@ jobs:
           libboost-program-options-dev
           libboost-system-dev
           ninja-build
-          qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+          qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5svg5-dev
 
       - name: Configure CMake
         working-directory: ${{runner.workspace}}/build
