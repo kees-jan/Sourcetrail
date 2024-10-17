@@ -41,12 +41,12 @@ jobs:
 
       - name: Import llvm gpg key
         run: >
-          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+          wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo dd of="/usr/share/keyrings/llvm.asc"
 
       - name: Add llvm repository
         run: >
           . /etc/lsb-release && 
-          echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME} main" 
+          echo "deb [signed-by=/usr/share/keyrings/llvm.asc] http://apt.llvm.org/${DISTRIB_CODENAME}/ llvm-toolchain-${DISTRIB_CODENAME} main" 
           | sudo dd of=/etc/apt/sources.list.d/llvm.list
 
       - name: Update apt package repos
