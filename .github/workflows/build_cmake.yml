@@ -50,22 +50,23 @@ jobs:
           | sudo dd of=/etc/apt/sources.list.d/llvm.list
 
       - name: Update apt package repos
-        run: >
+        run:
           sudo apt-get update
 
       - name: Install apt packages
         run: >
           sudo apt-get -yq --no-install-suggests --no-install-recommends install
           ccache
-#          libboost-dev
-#          libboost-filesystem-dev
-#          libboost-program-options-dev
-#          libboost-system-dev
-#          libboost-test-dev
-#          libboost-thread-dev
+          libboost-dev
           ninja-build
           clang-11 libclang-11-dev
           qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+
+      #          libboost-filesystem-dev
+      #          libboost-program-options-dev
+      #          libboost-system-dev
+      #          libboost-test-dev
+      #          libboost-thread-dev
 
 
       - name: Configure CMake
